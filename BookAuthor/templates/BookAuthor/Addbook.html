@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Book for Sale</title>
+  <!-- bs-s -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- Icons -->
+  <script src="https://kit.fontawesome.com/675ad92f7a.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/Guest/templates/Guest/bootstrap.min (1).css">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <style>
+    .book-highlight {
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      font-size: 24px;
+      color: #1a73e8; /* Change the color to your preference */
+    }
+    
+    .rotated-letter {
+      display: inline-block;
+      transform: rotate(-5deg);
+      color: #ff4081; /* Change the color to your preference */
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'BookAuthor:authorhome' %}">
+      Online <span class="book-highlight">B<span class="rotated-letter">O</span>OK</span> Store
+  </a>    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'BookAuthor:seller_bookings' %}">View Booking</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'BookAuthor:addbook' %}">Add Book</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'BookAuthor:AddEbook' %}">Add Ebook</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'BookAuthor:authprofile' %}">View Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'Guest:index' %}">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="form-container">
+        <h2>Add Book for Sale</h2>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="bookName" class="form-label">Book Name</label>
+            <input type="text" class="form-control" id="bookName" name="bookName" required>
+          </div>
+          <div class="mb-3">
+            <label for="bookImage" class="form-label">Book Cover Image</label>
+            <input type="file" class="form-control" id="bookImage" name="bookImage" accept="image/*" required>
+          </div>
+          <div class="mb-3">
+            <label for="authorName" class="form-label">Author Name</label>
+            <input type="text" class="form-control" id="authorName" name="authorName" required>
+          </div>
+          <div class="mb-3">
+            <label for="authorimage" class="form-label">Book Author Image</label>
+            <input type="file" class="form-control" id="authorimage" name="authorimage" accept="image/*" required>
+          </div>
+          <div class="mb-3">
+            <label for="bookPrice" class="form-label">Book Price</label>
+            <input type="number" class="form-control" id="bookPrice" name="bookPrice" required>
+          </div>
+          <div class="mb-3">
+            <label for="bookDescription" class="form-label">Book Description</label>
+            <textarea class="form-control" id="bookDescription" name="bookDescription" rows="5" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="bookCategory" class="form-label">Book Category</label>
+            <select class="form-select" id="bookCategory" name="bookCategory" required>
+              <option value="">Select Book Category</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Non-Fiction">Non-Fiction</option>
+              <option value="Science Fiction">Science Fiction</option>
+              <option value="Mystery">Mystery</option>
+              <option value="Thriller">Thriller</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Biography">Biography</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="sellerName" class="form-label">Seller Name</label>
+            <input type="text" class="form-control" id="sellerName" name="sellerName" required>
+          </div>
+          <div class="mb-3">
+            <label for="sellerEmail" class="form-label">Seller Email</label>
+            <input type="email" class="form-control" id="sellerEmail" name="sellerEmail" required>
+          </div>
+          <div class="mb-3">
+            <label for="sellerPhone" class="form-label">Seller Phone Number</label>
+            <input type="tel" class="form-control" id="sellerPhone" name="sellerPhone" required>
+          </div>
+          <div class="mb-3">
+            <label for="sellerDescription" class="form-label">Author Description</label>
+            <textarea class="form-control" id="sellerDescription" name="sellerDescription" rows="5" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="sellerLocation" class="form-label">Seller Location</label>
+            <input type="text" class="form-control" id="sellerLocation" name="sellerLocation" required>
+          </div>
+          <div class="mb-3">
+            <label for="sellerLicense" class="form-label">Seller License Number</label>
+            <input type="text" class="form-control" id="sellerLicense" name="sellerLicense" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br>
+<!-- Footer -->
+<footer class="text-white text-center text-lg-start bg-dark">
+  <!-- Grid container -->
+  <div class="container p-4">
+      <!--Grid row-->
+      <div class="row mt-4">
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+              <h5 class="text-uppercase mb-4" style="color: white;">About Our Bookstore</h5>
+              <p>
+                  Discover a wide range of books from various genres and authors at our online bookstore. Dive into
+                  captivating stories, gain knowledge from insightful reads, and find your next favorite book here.
+              </p>
+              <p>
+                  Connect with other book lovers, participate in discussions, share your thoughts on books, and explore
+                  recommendations. Embrace the joy of reading together!
+              </p>
+              <div class="mt-4">
+                  <!-- Social media icons -->
+                  <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-facebook-f"></i></a>
+                  <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-twitter"></i></a>
+                  <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-instagram"></i></a>
+                  <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-pinterest"></i></a>
+              </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase mb-4 pb-1" style="color: white;">Search Our Store</h5>
+              <div class="form-outline form-white mb-4">
+                  <input type="text" id="searchInput" class="form-control form-control-lg" />
+                  <label class="form-label" for="searchInput">Search</label>
+              </div>
+              <ul class="fa-ul" style="margin-left: 1.65em;">
+                  <li class="mb-3">
+                      <span class="fa-li"><i class="fas fa-map-marker-alt"></i></span><span
+                          class="ms-2">Online Bookstore, Worldwide</span>
+                  </li>
+                  <li class="mb-3">
+                      <span class="fa-li"><i class="fas fa-envelope"></i></span><span
+                          class="ms-2">contact@onlinebookstore.com</span>
+                  </li>
+                  <li class="mb-3">
+                      <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+1 234 567 890</span>
+                  </li>
+              </ul>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase mb-4" style="color: white;">Store Hours</h5>
+              <table class="table text-center text-white">
+                  <tbody class="fw-normal">
+                      <tr>
+                          <td>Mon - Fri:</td>
+                          <td>24hrs</td>
+                      </tr>
+                      <tr>
+                          <td>Saturday:</td>
+                          <td> 24hrs</td>
+                      </tr>
+                      <tr>
+                          <td>Sunday:</td>
+                          <td>24hrs</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <!--Grid column-->
+      </div>
+      <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Online Bookstore. All Rights Reserved.
+      <a class="text-white" href="#">Terms of Service</a>
+      <a class="text-white" href="#">Privacy Policy</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+<!-- End Footer -->
+
+<!-- Bootstrap JS CDN (Optional for form validation) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

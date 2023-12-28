@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Most Sold Books</title>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <script>
+        // Retrieve book data passed from Django view
+        const bookData = JSON.parse('{{ book_data | escapejs }}');
+
+        // Extract book names and sold counts for chart labels and data
+        const bookNames = bookData.map(book => book.Bookbooking__book_name);
+        const soldCounts = bookData.map(book => book.sold_count);
+
+        // Create a bar chart
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: bookNames,
+                datasets: [{
+                    label: 'Sold Count',
+                    data: soldCounts,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)', // Change color as needed
+                    borderColor: 'rgba(54, 162, 235, 1)', // Change color as needed
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Seller Profile</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+    
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+    
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        .card h2 {
+            margin-bottom: 20px;
+        }
+    
+        .card form input[type="submit"] {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        .card form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .card form a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #28a745; /* Changed button color to green */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .card form a:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+        form {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"],
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover,
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Update Seller Profile</h2>
+            <form method="post">
+                {% csrf_token %}
+                <label for="txt_name">Name:</label>
+                <input type="text" id="txt_name" name="txt_name" value="{{ seller.Name }}" required>
+        
+                <label for="txt_contact">Contact:</label>
+                <input type="text" id="txt_contact" name="txt_contact" value="{{ seller.Contact }}" required>
+        
+                <label for="txt_email">Email:</label>
+                <input type="email" id="txt_email" name="txt_email" value="{{ seller.Email }}" required>
+        
+                <label for="txt_address">Address:</label>
+                <input type="text" id="txt_address" name="txt_address" value="{{ seller.Address }}" required>
+        
+                <label for="txt_register_name">Register Name:</label>
+                <input type="text" id="txt_register_name" name="txt_register_name" value="{{ seller.Registername }}" required>
+        
+                <input type="submit" value="Update Profile">
+                <a href="{% url 'BookAuthor:authprofile' %}">View Change</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-panel {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: calc(100% - 18px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .button a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button a:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="form-panel">
+            <form method="post">
+                {% csrf_token %}
+                <h1 align="center">Upade Your Details</h1>
+                <label for="txt_firstname">First Name:</label>
+                <input type="text" id="txt_firstname" name="txt_firstname" value="{{ userupd.Firstname }}"><br><br>
+
+                <label for="txt_lastname">Last Name:</label>
+                <input type="text" id="txt_lastname" name="txt_lastname" value="{{ userupd.Lastname }}"><br><br>
+
+                <label for="txt_email">Email:</label>
+                <input type="email" id="txt_email" name="txt_email" value="{{ userupd.Email }}"><br><br>
+
+                <label for="txt_street">Street:</label>
+                <input type="text" id="txt_street" name="txt_street" value="{{ userupd.Street }}"><br><br>
+
+                <label for="txt_address">Address:</label>
+                <input type="text" id="txt_address" name="txt_address" value="{{ userupd.Address }}"><br><br>
+
+                <label for="txt_zipcode">Zip Code:</label>
+                <input type="text" id="txt_zipcode" name="txt_zipcode" value="{{ userupd.Zipcode }}"><br><br>
+
+                <label for="txt_place">Place:</label>
+                <input type="text" id="txt_place" name="txt_place" value="{{ userupd.Place }}"><br><br>
+
+                <label for="txt_country">Country:</label>
+                <input type="text" id="txt_country" name="txt_country" value="{{ userupd.Country }}"><br><br>
+
+                <label for="txt_phnNumber">Phone Number:</label>
+                <input type="text" id="txt_phnNumber" name="txt_phnNumber" value="{{ userupd.PhnNumber }}"><br><br>
+
+                <div class="button">
+                    <input type="submit" value="Update">
+                    <a href="{% url 'User:View-userProfile' %}">View Updates</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

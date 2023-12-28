@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Reviews</title>
+    <style>
+        /* Center the card within the webpage */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .card-container {
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* Styling for the card */
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card-container">
+        <h1>Reviews for {{ book_name }}</h1>
+        <ul>
+            {% for review in book_reviews %}
+            <li>
+                <div class="card">
+                    <p><strong>Rating:</strong> {{ review.get_rating_display }}</p>
+                    <hr>
+                    <p><strong>Comment:</strong> {{ review.comment }}</p>
+                </div>
+            </li>
+            {% empty %}
+            <li>No reviews yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>

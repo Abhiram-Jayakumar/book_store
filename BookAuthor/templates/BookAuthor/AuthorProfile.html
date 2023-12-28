@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Author Home</title>
+ <!-- bs-s -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+ integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!-- Icons -->
+<script src="https://kit.fontawesome.com/675ad92f7a.js" crossorigin="anonymous"></script>
+<!-- min -->
+<link rel="stylesheet" href="/BookAuthor/templates/BookAuthor/bootstrap.min.css">
+<!-- bs-j -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+ integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+ crossorigin="anonymous"></script>  <style>
+    .book-highlight {
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      font-size: 24px;
+      color: #1a73e8;
+    }
+    
+    .rotated-letter {
+      transform: rotate(-5deg);
+      color: #ff4081; 
+    } 
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+  }
+
+  /* Card Styles */
+  .card {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    }
+
+  .card-header {
+      color: darkred;
+      border-bottom: 1px solid #ccc;
+      padding: 15px;
+  }
+
+  .card-body {
+      padding: 20px;
+  }
+
+  .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  }
+
+  .btn-primary {
+      background-color: #007bff;
+  }
+
+  .btn-primary:hover {
+      background-color: #0056b3;
+  }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'BookAuthor:authorhome' %}">
+      Online <span class="book-highlight">B<span class="rotated-letter">O</span>OK</span> Store
+  </a>    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'BookAuthor:seller_bookings' %}">View Booking</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'BookAuthor:addbook' %}">Add Book</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'BookAuthor:AddEbook' %}">Add Ebook</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'BookAuthor:authprofile' %}">View Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'Guest:index' %}">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <br><br>
+
+ 
+
+
+
+  <div class="container mt-4">
+    <!-- Display user profile information -->
+    <div class="card">
+        <div class="card-header">
+            <h2>Author Profile</h2>
+        </div>
+        <div class="card-body">
+            <!-- Display user profile data -->
+            <p><strong>Name:</strong> {{ auth.Name }}</p>
+            <p><strong>Contact:</strong> {{ auth.Contact }}</p>
+            <p><strong>Email:</strong> {{ auth.Email }}</p>
+            <p><strong>Address:</strong> {{ auth.Address }}</p>
+            <p><strong>Registered Name:</strong> {{ auth.Registername }}</p>
+            <p><strong>Author License Number:</strong> {{ auth.AuthorLicno }}</p>
+            <!-- Links for editing profile and changing password -->
+            <a href="{% if auth.id %}{% url 'BookAuthor:update_seller_profile' cid=auth.id %}{% endif %}"
+                class="btn btn-primary">Edit Profile</a>
+            <a href="{% if auth.id %}{% url 'BookAuthor:seller_update_password' cid=auth.id %}{% endif %}" class="btn btn-primary">Change Password</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<br><br>
+<!-- Footer -->
+<footer class="text-white text-center text-lg-start bg-dark">
+  <!-- Grid container -->
+  <div class="container p-4">
+      <!--Grid row-->
+      <div class="row mt-4">
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+              <h5 class="text-uppercase mb-4" style="color: white;">About Our Bookstore</h5>
+              <p>
+                  Discover a wide range of books from various genres and authors at our online bookstore. Dive into
+                  captivating stories, gain knowledge from insightful reads, and find your next favorite book here.
+              </p>
+              <p>
+                  Connect with other book lovers, participate in discussions, share your thoughts on books, and explore
+                  recommendations. Embrace the joy of reading together!
+              </p>
+              <div class="mt-4">
+                  <!-- Social media icons -->
+                  <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-facebook-f"></i></a>
+                  <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-twitter"></i></a>
+                  <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-instagram"></i></a>
+                  <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-pinterest"></i></a>
+              </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase mb-4 pb-1" style="color: white;">Search Our Store</h5>
+              <div class="form-outline form-white mb-4">
+                  <input type="text" id="searchInput" class="form-control form-control-lg" />
+                  <label class="form-label" for="searchInput">Search</label>
+              </div>
+              <ul class="fa-ul" style="margin-left: 1.65em;">
+                  <li class="mb-3">
+                      <span class="fa-li"><i class="fas fa-map-marker-alt"></i></span><span
+                          class="ms-2">Online Bookstore, Worldwide</span>
+                  </li>
+                  <li class="mb-3">
+                      <span class="fa-li"><i class="fas fa-envelope"></i></span><span
+                          class="ms-2">contact@onlinebookstore.com</span>
+                  </li>
+                  <li class="mb-3">
+                      <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+1 234 567 890</span>
+                  </li>
+              </ul>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase mb-4" style="color: white;">Store Hours</h5>
+              <table class="table text-center text-white">
+                  <tbody class="fw-normal">
+                      <tr>
+                          <td>Mon - Fri:</td>
+                          <td>24hrs</td>
+                      </tr>
+                      <tr>
+                          <td>Saturday:</td>
+                          <td> 24hrs</td>
+                      </tr>
+                      <tr>
+                          <td>Sunday:</td>
+                          <td>24hrs</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <!--Grid column-->
+      </div>
+      <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Online Bookstore. All Rights Reserved.
+      <a class="text-white" href="#">Terms of Service</a>
+      <a class="text-white" href="#">Privacy Policy</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+<!-- End Footer -->
+  <!-- Bootstrap JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

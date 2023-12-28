@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="stylwe.css">
+  <!-- bs-s -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- Icons -->
+  <script src="https://kit.fontawesome.com/675ad92f7a.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/Guest/templates/Guest/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+
+  <style>
+    .book-highlight {
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      font-size: 24px;
+      color: #1a73e8;
+      /* Change the color to your preference */
+    }
+
+    .rotated-letter {
+      display: inline-block;
+      transform: rotate(-5deg);
+      color: #ff4081;
+      /* Change the color to your preference */
+    }
+    .auth-links {
+      display: inline-block;
+      margin-right: 10px; /* Adjust the margin as needed */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'Guest:index' %}">
+        Online <span class="book-highlight">B<span class="rotated-letter">O</span>OK</span> Store
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'Guest:login' %}">LOGIN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'Guest:register' %}">SignUP</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <h1 align="center"><b>REGISTRATION</b></h1>
+  <form method="POST" id="userform">
+    {% csrf_token %}
+    <section class="h-100 h-custom gradient-custom-2">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12">
+            <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+              <div class="card-body p-0">
+                <div class="row g-0">
+                  <div class="col-lg-6">
+                    <div class="p-5">
+                      <h3 class="fw-normal mb-5" style="color: #0e0e0e;">General Infomation</h3>
+
+                      <div class="row">
+                        <div class="col-md-6 mb-4 pb-2">
+
+                          <div class="form-outline">
+                            <input type="text" name="first_name" id="form3Examplev2"
+                              class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplev2">First name</label>
+                          </div>
+
+                        </div>
+                        <div class="col-md-6 mb-4 pb-2">
+
+                          <div class="form-outline">
+                            <input type="text" name="last_name" id="form3Examplev3"
+                              class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Examplev3">Last name</label>
+                          </div>
+
+                        </div>
+                      </div>
+
+
+                      <div class="mb-4 pb-2">
+                        <div class="form-outline">
+                          <input type="email" name="user_email" id="form3Examplev4"
+                            class="form-control form-control-lg" />
+                          <label class="form-label" for="form3Examplev4">Email</label>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-lg-6 bg-indigo text-white">
+                    <div class="p-5">
+                      <h3 class="fw-normal mb-5 text-dark ">Contact Details</h3>
+
+                      <div class="mb-4 pb-2">
+                        <div class="form-outline form-white">
+                          <input type="text" name="street" id="form3Examplea2" class="form-control form-control-lg" />
+                          <label class="form-label text-dark" for="form3Examplea2">Street + Nr</label>
+                        </div>
+                      </div>
+
+                      <div class="mb-4 pb-2">
+                        <div class="form-outline form-white">
+                          <input type="text" name="address" id="form3Examplea3" class="form-control form-control-lg" />
+                          <label class="form-label text-dark " for="form3Examplea3">Address</label>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-5 mb-4 pb-2">
+
+                          <div class="form-outline form-white">
+                            <input type="text" name="zip_code" id="form3Examplea4"
+                              class="form-control form-control-lg" />
+                            <label class="form-label text-dark" for="form3Examplea4">Zip Code</label>
+                          </div>
+
+                        </div>
+                        <div class="col-md-7 mb-4 pb-2">
+
+                          <div class="form-outline form-white">
+                            <input type="text" name="place" id="form3Examplea5" class="form-control form-control-lg" />
+                            <label class="form-label text-dark" for="form3Examplea5">Place</label>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <div class="mb-4 pb-2">
+                        <div class="form-outline form-white">
+                          <input type="text" name="country" id="form3Examplea6" class="form-control form-control-lg" />
+                          <label class="form-label text-dark" for="form3Examplea6">Country</label>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-5 mb-4 pb-2">
+
+                          <div class="form-outline form-white">
+                            <input type="number" name="ph_code" id="form3Examplea7"
+                              class="form-control form-control-lg" />
+                            <label class="form-label text-dark" for="form3Examplea7">Code +</label>
+                          </div>
+
+                        </div>
+                        <div class="col-md-7 mb-4 pb-2">
+
+                          <div class="form-outline form-white">
+                            <input type="number" name="phn_number" id="form3Examplea8"
+                              class="form-control form-control-lg" />
+                            <label class="form-label text-dark" for="form3Examplea8">Phone Number</label>
+                          </div>
+
+                        </div>
+                        <div class="col-md-7 mb-4 pb-2">
+
+                          <div class="form-outline form-white">
+                            <input type="password" name="password" id="form3Examplea5"
+                              class="form-control form-control-lg" />
+                            <label class="form-label text-dark" for="form3Examplea5">Password</label>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="form-check d-flex justify-content-start mb-4 pb-3">
+                        <input class="form-check-input me-3" type="checkbox" value="" id="form2Example3c" />
+                        <label class="form-check-label text-dark" for="form2Example3">
+                          I do accept the <a href="#!" class="text-dark"><u>Terms and Conditions</u></a> of your
+                          site.
+                        </label>
+                      </div>
+
+                      <button type="submit" name="btn_submit" class="btn btn-primary btn-lg" data-mdb-ripple-color="dark">
+                        <b>Register</b>
+                      </button>
+                      <div class="auth-links">
+                        <a href="{% url 'Guest:login' %}"><b>Already have an account</b></a>
+                      </div>
+                      <div class="auth-links">
+                        <a href="{% url 'Guest:sellerregister' %}"><b>Seller register</b></a>
+                      </div>
+                      
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        
+      </div>
+
+  </form>
+  </div>
+  </section>
+  <div>
+    <!-- Footer -->
+    <footer class="text-white text-center text-lg-start bg-dark">
+      <!-- Grid container -->
+      <div class="container p-4">
+        <!--Grid row-->
+        <div class="row mt-4">
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-4" style="color: white;">About Our Bookstore</h5>
+            <p>
+              Discover a wide range of books from various genres and authors at our online bookstore. Dive into
+              captivating stories, gain knowledge from insightful reads, and find your next favorite book here.
+            </p>
+            <p>
+              Connect with other book lovers, participate in discussions, share your thoughts on books, and explore
+              recommendations. Embrace the joy of reading together!
+            </p>
+            <div class="mt-4">
+              <!-- Social media icons -->
+              <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-facebook-f"></i></a>
+              <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-twitter"></i></a>
+              <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-instagram"></i></a>
+              <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-pinterest"></i></a>
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-4 pb-1" style="color: white;">Search Our Store</h5>
+            <div class="form-outline form-white mb-4">
+              <input type="text" id="searchInput" class="form-control form-control-lg" />
+              <label class="form-label" for="searchInput">Search</label>
+            </div>
+            <ul class="fa-ul" style="margin-left: 1.65em;">
+              <li class="mb-3">
+                <span class="fa-li"><i class="fas fa-map-marker-alt"></i></span><span class="ms-2">Online Bookstore,
+                  Worldwide</span>
+              </li>
+              <li class="mb-3">
+                <span class="fa-li"><i class="fas fa-envelope"></i></span><span
+                  class="ms-2">contact@onlinebookstore.com</span>
+              </li>
+              <li class="mb-3">
+                <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+1 234 567 890</span>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-4" style="color: white;">Store Hours</h5>
+            <table class="table text-center text-white">
+              <tbody class="fw-normal">
+                <tr>
+                  <td>Mon - Fri:</td>
+                  <td>24hrs</td>
+                </tr>
+                <tr>
+                  <td>Saturday:</td>
+                  <td> 24hrs</td>
+                </tr>
+                <tr>
+                  <td>Sunday:</td>
+                  <td>24hrs</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 Online Bookstore. All Rights Reserved.
+        <a class="text-white" href="#">Terms of Service</a>
+        <a class="text-white" href="#">Privacy Policy</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+
+    <!-- End Footer -->
+  </div>
+</body>
+
+</html>

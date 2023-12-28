@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Details</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .card {
+            width: 400px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .card h1 {
+            text-align: center;
+        }
+
+        .card p {
+            margin-bottom: 10px;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #6c757d;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .back-button:hover {
+            background-color: #495057;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Order Details</h1>
+        <div>
+            <p>Book Name: {{ book_name }}</p>
+            <p>Book Price: {{ book_price }}</p>
+            <p>Book Description: {{ book_description }}</p>
+            <p>Book Category: {{ book_category }}</p>
+            <p>Author Name: {{ author_name }}</p>
+            <a class="back-button" href="{% url 'User:bookingdetailsUser' %}">Back</a>
+        </div>
+    </div>
+</body>
+</html>

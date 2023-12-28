@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ ebook.book_name }} Details</title>
+    <style>
+        /* Reset default margin and padding */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* Center the content */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Card styles */
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 40%;
+            height: auto;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .card-content {
+            padding: 20px;
+            width: 60%;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 28px;
+            color: #333;
+        }
+
+        p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <img src="{{ ebook.book_cover_image.url }}" alt="{{ ebook.book_name }}">
+            <div class="card-content">
+                <h1>{{ ebook.book_name }} Details</h1>
+                <p><strong>Author:</strong> {{ ebook.author_name }}</p>
+                <p><strong>Price:</strong> ${{ ebook.book_price }}</p>
+                <p><strong>Category:</strong> {{ ebook.get_book_category_display }}</p>
+                <p><strong>Description:</strong> {{ ebook.book_description }}</p>
+                <form action="{% url 'User:Ecart' bbook_id=ebook.id %}" method="post">
+                    {% csrf_token %}
+                    <button><i class="fa fa-download"></i> Download</button>&nbsp;&nbsp;
+                    <a href="{% url 'User:view_ebook_reviews' ebook_id=ebook.id %}" class="btn btn-primary">View Reviews</a> &nbsp;&nbsp;
+                    <a href="{% url 'User:add_ebook_review' ebook_id=ebook.id %}">Add Review</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

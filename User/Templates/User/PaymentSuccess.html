@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Success</title>
+    <style>
+        /* Styling for the card container */
+        .card {
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        /* Styling for the heading */
+        .card h1 {
+            text-align: center;
+        }
+
+        /* Styling for the content inside the card */
+        .card-content {
+            margin-top: 20px;
+        }
+
+        /* Styling for the download link */
+        .download-link a.download-button {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .download-link a.download-button.download-ebook {
+            background-color: #3498db; /* Blue color for download button */
+        }
+
+        .download-link a.download-button.user-homepage {
+            background-color: #e74c3c; /* Red color for user homepage button */
+        }
+
+        .download-link a.download-button:hover {
+            opacity: 0.8;
+        }
+
+        /* Center aligning content */
+        .download-link {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>Payment Successful!</h1>
+
+        <div class="card-content">
+            <!-- Display payment success message -->
+            <p align="center">Your payment has been successfully processed.</p>
+
+            <!-- Provide download link for the appropriate e-book -->
+            <div class="download-link">
+                {% if pay.id %}
+                    <a class="download-button download-ebook" href="{% url 'User:download_ebook' pid=pay.id %}">Download Your E-Book</a>
+                    <a class="download-button user-homepage" href="{% url 'User:userhome' %}">User Homepage</a>
+                {% else %}
+                    <p>No e-book available for download.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Other HTML content -->
+
+    <!-- Add your scripts at the end of the body if required -->
+</body>
+
+</html>

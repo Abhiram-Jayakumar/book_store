@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Author Details</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .author-details {
+            text-align: center;
+        }
+
+        .author-details img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <br><br><br><br>
+
+    <div class="container">
+        <div class="author-details">
+            <img src="{{ ebook.author_image.url }}" alt="{{ ebook.author_name }}">
+            <h1>{{ ebook.author_name }}</h1>
+            <p><strong>Description:</strong> {{ ebook.seller_description }}</p>
+        </div>
+    </div>
+
+</body>
+</html>

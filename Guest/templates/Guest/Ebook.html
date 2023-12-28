@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Book Store</title>
+  <!-- stylesheet -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- min.css -->
+  <link rel="stylesheet" href="/Guest/templates/Guest/bootstrap.min.css">
+  <!-- Icons -->
+  <script src="https://kit.fontawesome.com/675ad92f7a.js" crossorigin="anonymous"></script>
+  <style>
+    .card-link {
+      text-decoration: none;
+      /* Remove underline from the card link */
+      color: inherit;
+      /* Inherit text color from parent */
+    }
+
+    /* Custom styles for the card */
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 2px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .card-body .read-more {
+      text-align: left;
+    }
+
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      border: solid 1px rgb(253, 253, 253);
+    }
+
+    .card-body form {
+      margin-top: auto;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      color: #555;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+
+
+    .breadcrumb-chevron {
+      --bs-breadcrumb-divider: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236c757d'%3E%3Cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+      gap: .5rem;
+    }
+
+    .breadcrumb-chevron .breadcrumb-item {
+      display: flex;
+      gap: inherit;
+      align-items: center;
+      padding-left: 0;
+      line-height: 1;
+    }
+
+    .breadcrumb-chevron .breadcrumb-item::before {
+      gap: inherit;
+      float: none;
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .breadcrumb-custom .breadcrumb-item {
+      position: relative;
+      flex-grow: 1;
+      padding: .75rem 3rem;
+    }
+
+    .breadcrumb-custom .breadcrumb-item::before {
+      display: none;
+    }
+
+    .breadcrumb-custom .breadcrumb-item::after {
+      position: absolute;
+      top: 50%;
+      right: -25px;
+      z-index: 1;
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      margin-top: -25px;
+      content: "";
+      background-color: var(--bs-tertiary-bg);
+      border-top-right-radius: .5rem;
+      box-shadow: 1px -1px var(--bs-border-color);
+      transform: scale(.707) rotate(45deg);
+    }
+
+    .breadcrumb-custom .breadcrumb-item:first-child {
+      padding-left: 1.5rem;
+    }
+
+    .breadcrumb-custom .breadcrumb-item:last-child {
+      padding-right: 1.5rem;
+    }
+
+    .breadcrumb-custom .breadcrumb-item:last-child::after {
+      display: none;
+    }
+
+    .book-highlight {
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      font-size: 24px;
+      color: #1a73e8; /* Change the color to your preference */
+    }
+    
+    .rotated-letter {
+      display: inline-block;
+      transform: rotate(-5deg);
+      color: #ff4081; /* Change the color to your preference */
+    }
+    a{
+      text-decoration: none;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'Guest:ebook_list' %}">
+        Online <span class="book-highlight">B<span class="rotated-letter">O</span>OK</span> Store
+    </a>      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'Guest:login' %}">LOGIN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'Guest:register' %}">SignUP</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+
+  <!-- Carousel -->
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <!-- Add your carousel items here -->
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://i.postimg.cc/7LvNCZJ6/giammarco-boscaro-ze-H-ljaw-Htg-unsplash.jpg"
+                    class="d-block w-100" alt="First Slide" style="height: 90vh;">
+                <div class="carousel-caption d-none d-md-block text-start">
+                    <h1 style="color: white;">Welcome to Our Online Bookstore!</h1>
+                    <h3 style="color: white;">Discover a vast collection of books from various genres and authors. Dive into thrilling stories, gain knowledge from insightful reads, and find your next favorite book here.</h3>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.postimg.cc/rsY1qVLq/chuttersnap-Zf64-Osndqvc-unsplash.jpg"
+                    class="d-block w-100" alt="Second Slide" style="height: 90vh;">
+                <div class="carousel-caption d-none d-md-block text-start">
+                    <h1>Explore New Releases and Bestsellers</h1>
+                    <h3>Stay updated with the latest releases and bestsellers in literature, fiction, non-fiction, and more. Our bookstore brings you the most sought-after titles from renowned authors.</h3>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.postimg.cc/6qSvDMd3/inaki-del-olmo-NIJu-EQw0-RKg-unsplash.jpg"
+                    class="d-block w-100" alt="Third Slide" style="height: 90vh;">
+                <div class="carousel-caption d-none d-md-block text-start">
+                    <h1 style="color: white;">Join Our Reading Community</h1>
+                    <h3 style="color: white;">Connect with other book lovers, participate in discussions, share your thoughts on books, and explore recommendations. Embrace the joy of reading together!</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!-- End Carousel -->
+  <!-- bread crubs -->
+
+  <div class="container my-5">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center bg-body-tertiary border rounded-3">
+        <li class="breadcrumb-item">
+          <a class="link-body-emphasis fw-semibold text-decoration-none" href="{% url 'Guest:index' %}">
+            <svg class="bi" width="16" height="16">
+              <use xlink:href="#house-door-fill"></use>
+            </svg>
+            Home
+          </a>
+        </li>
+        <li class="breadcrumb-item">
+          <a class="link-body-emphasis fw-semibold text-decoration-none" href="{% url 'Guest:ebook_list' %}">Ebook</a>
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- bread crumbs end -->
+  <div class="container mt-4">
+    <div class="row">
+      {% for ebook in ebooks %}
+      <div class="col-md-4 mb-3">
+        <a href="{% url 'Guest:Ebookdisp' ebook.id %}" class="card-link">
+          <div class="card">
+            <img src="{{ ebook.book_cover_image.url }}" class="card-img-top" alt="{{ ebook.book_name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ ebook.book_name }}</h5>
+              <p class="card-text" id="description_{{ book.id }}">{{ ebook.book_description | truncatechars:100 }}</p>
+              {% if ebook.book_description|length > 100 %}
+
+              <a href="{% url 'User:Ebookdispuser' ebook.id %}"> Read More></a>
+              <br>
+              {% endif %}
+              <p><strong>Author:</strong> <a href="{% url 'Guest:Guestauthor_detail' ebook_id=ebook.id %}">{{ ebook.author_name }}</a></p>
+                            <p class="card-text">Price: ${{ ebook.book_price }}</p>
+              <!-- Add more details or buttons as needed -->
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+  <footer class="text-white text-center text-lg-start bg-dark">
+    <!-- Grid container -->
+    <div class="container p-4">
+        <!--Grid row-->
+        <div class="row mt-4">
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-4" style="color: white;">About Our Bookstore</h5>
+                <p>
+                    Discover a wide range of books from various genres and authors at our online bookstore. Dive into
+                    captivating stories, gain knowledge from insightful reads, and find your next favorite book here.
+                </p>
+                <p>
+                    Connect with other book lovers, participate in discussions, share your thoughts on books, and explore
+                    recommendations. Embrace the joy of reading together!
+                </p>
+                <div class="mt-4">
+                    <!-- Social media icons -->
+                    <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-facebook-f"></i></a>
+                    <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-twitter"></i></a>
+                    <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-instagram"></i></a>
+                    <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-4 pb-1" style="color: white;">Search Our Store</h5>
+                <div class="form-outline form-white mb-4">
+                    <input type="text" id="searchInput" class="form-control form-control-lg" />
+                    <label class="form-label" for="searchInput">Search</label>
+                </div>
+                <ul class="fa-ul" style="margin-left: 1.65em;">
+                    <li class="mb-3">
+                        <span class="fa-li"><i class="fas fa-map-marker-alt"></i></span><span
+                            class="ms-2">Online Bookstore, Worldwide</span>
+                    </li>
+                    <li class="mb-3">
+                        <span class="fa-li"><i class="fas fa-envelope"></i></span><span
+                            class="ms-2">contact@onlinebookstore.com</span>
+                    </li>
+                    <li class="mb-3">
+                        <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+1 234 567 890</span>
+                    </li>
+                </ul>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-4" style="color: white;">Store Hours</h5>
+                <table class="table text-center text-white">
+                    <tbody class="fw-normal">
+                        <tr>
+                            <td>Mon - Fri:</td>
+                            <td>24hrs</td>
+                        </tr>
+                        <tr>
+                            <td>Saturday:</td>
+                            <td> 24hrs</td>
+                        </tr>
+                        <tr>
+                            <td>Sunday:</td>
+                            <td>24hrs</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 Online Bookstore. All Rights Reserved.
+        <a class="text-white" href="#">Terms of Service</a>
+        <a class="text-white" href="#">Privacy Policy</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+
+
+
+  <!-- Bootstrap Bundle with Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+    <script>
+      function toggleDescription(bookId) {
+        var description = document.getElementById('description_' + bookId);
+        var btnText = document.getElementById('readMoreBtn_' + bookId);
+  
+        if (description.style.display === 'none' || description.style.display === '') {
+          description.style.display = 'block';
+          btnText.innerHTML = 'Read Less';
+        } else {
+          description.style.display = 'none';
+          btnText.innerHTML = 'Read More';
+        }
+      }
+    </script>
+</body>
+
+</html>
