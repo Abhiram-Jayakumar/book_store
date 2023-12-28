@@ -19,3 +19,8 @@
 <p>User can View booked details</p>
 <p>user can  Trackorder</p>
 <p>user can Give Complaint</p>
+
+<h1>Seller</h1>
+.
+.
+.
